@@ -68,7 +68,10 @@ internal fun XmlPullParser.node(): Node {
         "androidx.cardview.widget.CardView",
         "com.google.android.material.card.MaterialCardView" -> cardView()
 
-        else -> unknown()
+        else -> {
+            println("Unknown view: $name")
+            unknown()
+        }
     }
 }
 

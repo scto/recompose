@@ -38,6 +38,9 @@ fun XmlPullParser.drawable(name: String): Drawable? {
 
         value.startsWith("?") -> Drawable.StyleAttribute(name = value.substring(1))
 
-        else -> throw Parser.ParserException("Unknown drawable format: $value")
+        else -> {
+            println("Unknown drawable format: $value on $name")
+            null
+        }
     }
 }
