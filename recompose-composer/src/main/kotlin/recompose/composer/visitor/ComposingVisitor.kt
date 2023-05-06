@@ -23,6 +23,7 @@ import recompose.ast.view.CheckBoxNode
 import recompose.ast.view.EditTextNode
 import recompose.ast.view.ImageViewNode
 import recompose.ast.view.RadioButtonNode
+import recompose.ast.view.RangeSliderNode
 import recompose.ast.view.SwitchNode
 import recompose.ast.view.TextViewNode
 import recompose.ast.view.ViewNode
@@ -177,6 +178,20 @@ internal class ComposingVisitor : Visitor {
                 )
             }
         }
+    }
+
+    override fun visitRangeSlider(node: RangeSliderNode) {
+        val modifier = ModifierBuilder(node)
+
+        writer.writeLine("var sliderPosition by remember { mutableStateOf(0f..100f) }")
+        writer.writeCall(
+            name = "RangeSlider",
+            parameters = listOf(
+                CallParameter(name = "value", value = ParameterValue.RawValue("sliderPosition")),
+                CallParameter(name = "onValueChange", value = ParameterValue.EmptyLambdaValue),
+                modifier.toCallParameter()
+            )
+        )
     }
 
     override fun visitCardView(node: CardViewNode) {

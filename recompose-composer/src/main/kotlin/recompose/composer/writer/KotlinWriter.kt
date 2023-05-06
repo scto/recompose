@@ -113,6 +113,10 @@ internal class KotlinWriter {
         writer.writeLine()
     }
 
+    fun writeLine(value: String) {
+        writer.writeLine(value)
+    }
+
     private fun writeString(value: ParameterValue.StringValue) {
         writer.continueLine("\"")
         writer.continueLine(value.raw)

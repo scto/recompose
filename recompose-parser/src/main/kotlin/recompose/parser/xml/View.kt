@@ -32,6 +32,7 @@ import recompose.parser.xml.view.checkBox
 import recompose.parser.xml.view.editText
 import recompose.parser.xml.view.imageView
 import recompose.parser.xml.view.radioButton
+import recompose.parser.xml.view.rangeSlider
 import recompose.parser.xml.view.switch
 import recompose.parser.xml.view.textView
 import recompose.parser.xml.view.view
@@ -62,6 +63,7 @@ internal fun XmlPullParser.node(): Node {
         "Switch" -> switch()
 
         // AndroidX
+        "com.google.android.material.slider.RangeSlider" -> rangeSlider()
         "androidx.constraintlayout.widget.ConstraintLayout" -> constraintLayout()
         "androidx.cardview.widget.CardView",
         "com.google.android.material.card.MaterialCardView" -> cardView()
