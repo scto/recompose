@@ -31,7 +31,7 @@ import recompose.parser.xml.viewAttributes
  */
 internal fun XmlPullParser.textView(): TextViewNode {
     val viewAttributes = viewAttributes()
-    val text = getAttributeValue(null, "android:text") ?: ""
+    val text = getAttributeValue(null, "android:text") ?: getAttributeValue(null, "tools:text") ?: ""
     val textColor = color("android:textColor")
     val textSize = size("android:textSize")
     val maxLines = integer("android:maxLines")
