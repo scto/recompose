@@ -26,7 +26,6 @@ dependencies {
 intellij {
     pluginName = "Recompose"
     version = "2019.3"
-    updateSinceUntilBuild = false
     downloadSources = true
     updateSinceUntilBuild = true
 
@@ -46,6 +45,6 @@ tasks {
     }
     patchPluginXml {
         sinceBuild("193")
-        untilBuild("202.*")
+        untilBuild("999.*")
     }
 }
