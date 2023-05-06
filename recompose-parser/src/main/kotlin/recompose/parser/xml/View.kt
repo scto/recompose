@@ -55,6 +55,7 @@ internal fun XmlPullParser.node(): Node {
         // ViewNode
         "View" -> view()
         "TextView" -> textView()
+        "androidx.appcompat.widget.AppCompatImageView",
         "ImageView" -> imageView()
         "Button" -> button()
         "CheckBox" -> checkBox()
