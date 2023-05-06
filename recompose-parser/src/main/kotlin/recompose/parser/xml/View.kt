@@ -51,29 +51,45 @@ internal fun XmlPullParser.node(): Node {
         // ViewGroupNode
         "LinearLayout" -> linearLayout()
         "FrameLayout" -> frameLayout()
-
-        // ViewNode
-        "View" -> view()
-        "TextView" -> textView()
-        "androidx.appcompat.widget.AppCompatImageView",
-        "ImageView" -> imageView()
-        "Button" -> button()
-        "CheckBox" -> checkBox()
-        "RadioButton" -> radioButton()
-        "EditText" -> editText()
-        "Switch" -> switch()
-
         // AndroidX
-        "com.google.android.material.slider.RangeSlider" -> rangeSlider()
         "androidx.constraintlayout.widget.ConstraintLayout" -> constraintLayout()
         "androidx.cardview.widget.CardView",
         "com.google.android.material.card.MaterialCardView" -> cardView()
 
         else -> {
-            println("Unknown view: $name")
-            unknown()
+            val viewNode = when (name) {
+                // ViewNode
+                "View" -> view()
+                "TextView" -> textView()
+                "androidx.appcompat.widget.AppCompatImageView",
+                "ImageView" -> imageView()
+                "Button" -> button()
+                "CheckBox" -> checkBox()
+                "RadioButton" -> radioButton()
+                "EditText" -> editText()
+                "Switch" -> switch()
+
+                // AndroidX
+                "com.google.android.material.slider.RangeSlider" -> rangeSlider()
+
+                else -> {
+                    println("Unknown view: $name")
+                    unknown()
+                }
+            }
+
+            skipToEndTag()
+            viewNode
         }
     }
+}
+/**
+ * Skips to the end of the tag
+ */
+internal fun XmlPullParser.skipToEndTag() {
+    if (getEventType() == XmlPullParser.END_TAG) return
+    @Suppress("ControlFlowWithEmptyBody")
+    while (next() != XmlPullParser.END_TAG);
 }
 
 /**

@@ -62,7 +62,7 @@ class ComposerTest {
             """
                 ConstraintLayout(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
                     val (button000, button001, ref_1) = createRefs()
-                    
+                
                     Button(onClick = {}, modifier = Modifier.constrainAs(button000) {
                         start.linkTo(parent.start)
                         top.linkTo(parent.top)
@@ -137,7 +137,7 @@ class ComposerTest {
             """
                 ConstraintLayout(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
                     val (two, one, four, three, five) = createRefs()
-                    
+                
                     createHorizontalChain(one, two, three, chainStyle = ChainStyle.Spread)
                     createHorizontalChain(four, five)
                     createVerticalChain(two, four, chainStyle = ChainStyle.Packed)
@@ -181,7 +181,7 @@ class ComposerTest {
             """
                 ConstraintLayout(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
                     val (eye_right, eye_left, nose, mouth) = createRefs()
-                    
+                
                     createHorizontalChain(eye_left, eye_right, chainStyle = ChainStyle.Packed)
                     
                     Text(text = "👁", fontSize = 50.sp, modifier = Modifier.background(Color(0xffffcc00.toInt())).constrainAs(eye_left) {
