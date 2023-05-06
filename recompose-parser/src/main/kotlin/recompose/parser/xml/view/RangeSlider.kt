@@ -18,10 +18,14 @@ package recompose.parser.xml.view
 
 import org.xmlpull.v1.XmlPullParser
 import recompose.ast.view.RangeSliderNode
+import recompose.parser.util.assertEndTagNext
 import recompose.parser.xml.viewAttributes
 
 fun XmlPullParser.rangeSlider(): RangeSliderNode {
     val viewAttribute = viewAttributes()
+
+    assertEndTagNext()
+
     return RangeSliderNode(
         viewAttribute
     )
