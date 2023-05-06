@@ -32,6 +32,8 @@ fun XmlPullParser.drawable(name: String): Drawable? {
 
         value.startsWith("#") -> color(name)?.let { Drawable.ColorValue(it) }
 
+        value.startsWith("@color/") -> color(name)?.let { Drawable.ColorValue(it) }
+
         value.startsWith("@drawable/") -> Drawable.Resource(name = value.substring(10))
 
         value.startsWith("@android:drawable/") -> Drawable.AndroidResource(name = value.substring(18))
