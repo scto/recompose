@@ -31,8 +31,8 @@ import recompose.composer.model.Chain
  * It's a bit rough.. But does the job.
  */
 @Suppress("TooManyFunctions")
-internal class KotlinWriter {
-    private val writer = LineWriter()
+internal class KotlinWriter(startIndentation: Int = 0) {
+    private val writer = LineWriter(startIndentation)
 
     /**
      * Writes a function call.
@@ -68,7 +68,7 @@ internal class KotlinWriter {
         writer.startLine("val (")
         writer.continueLine(refs.joinToString(", "))
         writer.endLine(") = createRefs()")
-        writer.writeLine()
+        writer.endLine()
     }
 
     fun writeChains(chains: Set<Chain>) {

@@ -26,9 +26,9 @@ import recompose.composer.visitor.ComposingVisitor
  * additional information, like for example the list of classes that need to be automatically imported when pasting
  * this code.
  */
-class Composer {
+class Composer(val startIndentation: Int = 0) {
     fun compose(layout: Layout): String {
-        val visitor = ComposingVisitor()
+        val visitor = ComposingVisitor(startIndentation)
         layout.accept(visitor)
         return visitor.getResult()
     }

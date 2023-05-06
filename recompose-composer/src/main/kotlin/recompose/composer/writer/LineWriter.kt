@@ -21,9 +21,9 @@ private const val INDENT = "    "
 /**
  * Low-level wrapper around [StringBuilder] dealing with writing and identing lines.
  */
-internal class LineWriter {
+internal class LineWriter(startIndentation: Int = 0) {
     private val builder = StringBuilder()
-    private var indent = 0
+    private var indent = startIndentation
 
     fun writeBlock(block: LineWriter.() -> Unit) {
         indent++

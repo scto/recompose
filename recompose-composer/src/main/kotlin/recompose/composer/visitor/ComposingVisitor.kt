@@ -45,8 +45,8 @@ import recompose.visitor.Visitor
  * [Visitor] implementation that traverses the parsed [Layout] and transforms it into `Composable" calls.
  */
 @Suppress("TooManyFunctions")
-internal class ComposingVisitor : Visitor {
-    private val writer = KotlinWriter()
+internal class ComposingVisitor(startIndentation: Int = 0) : Visitor {
+    private val writer = KotlinWriter(startIndentation)
 
     fun getResult(): String {
         return writer.getString()
