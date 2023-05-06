@@ -118,9 +118,15 @@ internal class KotlinWriter(startIndentation: Int = 0) {
     }
 
     private fun writeString(value: ParameterValue.StringValue) {
-        writer.continueLine("\"")
-        writer.continueLine(value.raw)
-        writer.continueLine("\"")
+        if (value.raw.startsWith("@string/")) {
+            writer.continueLine("stringResource(R.string.")
+            writer.continueLine(value.raw.removePrefix("@string/"))
+            writer.continueLine(")")
+        } else {
+            writer.continueLine("\"")
+            writer.continueLine(value.raw)
+            writer.continueLine("\"")
+        }
     }
 
     private fun writeEmptyLambda() {
